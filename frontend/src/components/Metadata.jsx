@@ -31,7 +31,7 @@ export default function Metadata({ metadata }) {
         className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-charcoal-850 text-slate-300 border border-charcoal-700/60"
       >
         <Cpu className="w-3.5 h-3.5 text-blue-400" />
-        <span>{metadata.model || 'gemini/gemini-2.0-flash'}</span>
+        <span>{metadata.model || 'gemini/gemini-3.5-flash-lite'}</span>
       </div>
 
       {/* Latency */}

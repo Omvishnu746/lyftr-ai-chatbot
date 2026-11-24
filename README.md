@@ -58,7 +58,7 @@ flowchart TD
    Edit `.env` and insert your two Gemini API keys:
    ```env
    LLM_API_KEYS=AIzaSyYourFirstKeyHere,AIzaSyYourSecondKeyHere
-   LLM_MODEL=gemini/gemini-2.0-flash
+   LLM_MODEL=gemini/gemini-3.5-flash-lite
    DATABASE_URL=sqlite:////data/app.db
    ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
    ENABLE_FAILURE_SIMULATION=true
@@ -112,7 +112,7 @@ cp ../.env.example .env
 Ensure your `.env` contains:
 ```env
 LLM_API_KEYS=your_first_gemini_key,your_second_gemini_key
-LLM_MODEL=gemini/gemini-2.0-flash
+LLM_MODEL=gemini/gemini-3.5-flash-lite
 DATABASE_URL=sqlite:///./data/app.db
 ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
 ENABLE_FAILURE_SIMULATION=true
@@ -164,7 +164,7 @@ python -m pytest backend/tests -v
 ### B. LiteLLM Built-in Response Caching
 - **Engine:** Configured using LiteLLM's official built-in cache (`from litellm.caching.caching import Cache; litellm.cache = Cache(type="local")`).
 - **Deterministic Key Composition:** The cache lookup depends on:
-  1. `model`: Model identifier (e.g. `gemini/gemini-2.0-flash`).
+  1. `model`: Model identifier (e.g. `gemini/gemini-3.5-flash-lite`).
   2. `messages`: The complete ordered message list (optional system prompt + chronological multi-turn history + new user message).
 - **Cross-Session Cache Hits:** The same initial prompt across two distinct sessions returns `resolution_source: "LLM_CACHE"` on the second call because the prompt payload is identical.
 - **Context Sensitivity:** Different prompts or different multi-turn conversation states generate distinct keys, preventing cache cross-talk.
@@ -318,7 +318,7 @@ X-Simulate-Failure: key_1=429  (optional)
   "reply": "The capital of France is Paris.",
   "metadata": {
     "resolution_source": "LIVE_INFERENCE",
-    "model": "gemini/gemini-2.0-flash",
+    "model": "gemini/gemini-3.5-flash-lite",
     "latency_ms": 612,
     "input_tokens": 42,
     "output_tokens": 9,
@@ -366,7 +366,7 @@ Host: localhost:8000
 4. Add a **Persistent Volume** in Railway mounted at `/data`.
 5. Configure Environment Variables in Railway dashboard:
    - `LLM_API_KEYS`: `AIzaSyKey1...,AIzaSyKey2...`
-   - `LLM_MODEL`: `gemini/gemini-2.0-flash`
+   - `LLM_MODEL`: `gemini/gemini-3.5-flash-lite`
    - `DATABASE_URL`: `sqlite:////data/app.db`
    - `ALLOWED_ORIGINS`: `https://your-frontend.vercel.app,http://localhost:3000`
    - `ENABLE_FAILURE_SIMULATION`: `true`

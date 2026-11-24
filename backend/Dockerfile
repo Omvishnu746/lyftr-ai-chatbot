@@ -29,7 +29,7 @@ COPY app/ ./app/
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     DATABASE_URL=sqlite:////data/app.db \
-    LLM_MODEL=gemini/gemini-2.0-flash \
+    LLM_MODEL=gemini/gemini-3.5-flash-lite \
     ENABLE_FAILURE_SIMULATION=true \
     PORT=8000
 
